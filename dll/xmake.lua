@@ -1,0 +1,12 @@
+target("kaamoclubmodapi")
+    set_kind("shared")
+    add_files("src/**.cpp")
+    add_includedirs("include")
+    add_packages("lua", "sol2", "minhook", "microsoft-detours")
+    add_deps("abyss", "yu")
+    add_syslinks("user32")
+    set_languages("c++23")
+
+    after_build(function (target)
+        os.cp(target:targetfile(), "build")
+    end)

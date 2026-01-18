@@ -1,0 +1,15 @@
+{
+    options = {
+        plat = "windows",
+        mode = "debug",
+        arch = "x64"
+    },
+    recheck = false,
+    mtimes = {
+        ["abyss\\xmake.lua"] = 1768743206,
+        ["boost-ut\\xmake.lua"] = 1768741140,
+        ["dll\\xmake.lua"] = 1768764806,
+        ["yuxay\\xmake.lua"] = 1768152111,
+        ["xmake.lua"] = 1768741150
+    }
+}

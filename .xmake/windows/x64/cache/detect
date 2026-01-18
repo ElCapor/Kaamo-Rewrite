@@ -1,0 +1,104 @@
+{
+    find_program_msvc_arch_x86_plat_windows_checktoolcxx = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\cl.exe]]
+    },
+    find_package_windows_x86_fetch_package_xmake = {
+        ["xmake::sol2_b39d09d0a7bc4a93b9de0c2aa5f5009f_release_v3.5.0_external"] = {
+            sysincludedirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\s\sol2\v3.5.0\b39d09d0a7bc4a93b9de0c2aa5f5009f\include]]
+            },
+            version = "v3.5.0"
+        },
+        ["xmake::microsoft-detours_049edc4aee9e46b8981da21a2b1c1890_release_2023.6.8_external"] = {
+            linkdirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\microsoft-detours\2023.6.8\049edc4aee9e46b8981da21a2b1c1890\lib]]
+            },
+            libfiles = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\microsoft-detours\2023.6.8\049edc4aee9e46b8981da21a2b1c1890\lib\microsoft-detours.lib]]
+            },
+            static = true,
+            license = "MIT",
+            sysincludedirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\microsoft-detours\2023.6.8\049edc4aee9e46b8981da21a2b1c1890\include]]
+            },
+            links = {
+                "microsoft-detours"
+            },
+            version = "2023.6.8"
+        },
+        ["xmake::lua_4b70e5bc8fa244088c7c1a30cbab7251_release_v5.4.7_external"] = {
+            linkdirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\l\lua\v5.4.7\4b70e5bc8fa244088c7c1a30cbab7251\lib]]
+            },
+            libfiles = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\l\lua\v5.4.7\4b70e5bc8fa244088c7c1a30cbab7251\lib\lua.lib]]
+            },
+            static = true,
+            sysincludedirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\l\lua\v5.4.7\4b70e5bc8fa244088c7c1a30cbab7251\include\lua]]
+            },
+            links = {
+                "lua"
+            },
+            version = "v5.4.7"
+        },
+        ["xmake::minhook_5a5317a4f6c948a8add636e6178e936d_release_v1.3.4_external"] = {
+            linkdirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\minhook\v1.3.4\5a5317a4f6c948a8add636e6178e936d\lib]]
+            },
+            libfiles = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\minhook\v1.3.4\5a5317a4f6c948a8add636e6178e936d\lib\minhook.lib]]
+            },
+            static = true,
+            license = "BSD-2-Clause",
+            sysincludedirs = {
+                [[C:\Users\delly\AppData\Local\.xmake\packages\m\minhook\v1.3.4\5a5317a4f6c948a8add636e6178e936d\include]]
+            },
+            links = {
+                "minhook"
+            },
+            version = "v1.3.4"
+        }
+    },
+    find_program_msvc_arch_x86_plat_windows_checktoolar = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\link.exe]]
+    },
+    find_program_fetch_package_xmake = {
+        ninja = false,
+        cmake = false
+    },
+    find_programver_fetch_package_system = {
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja"] = "1.12.1",
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake"] = "4.1.1-msvc1"
+    },
+    find_program = {
+        ["C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x86\\cl.exe"] = [[c:\program files\microsoft visual studio\18\enterprise\vc\tools\msvc\14.50.35717\bin\hostx64\x86\cl.exe]],
+        gzip = false,
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\cl.exe]],
+        ["7z"] = [[C:\Users\delly\xmake\winenv\bin\7z]],
+        nim = false,
+        git = [[C:\Program Files\Git\cmd\git.exe]]
+    },
+    find_program_msvc_arch_x86_plat_windows_checktoolld = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\link.exe]]
+    },
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxflags_-nologo_-std:c++23"] = false,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxflags_-nologo_cl_sourceDependencies"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxflags_-nologo_cl_external_includedir"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxxflags_-nologo_/Zc:preprocessor"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxflags_-nologo_-std:c++23preview"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx__-nologo_-Od"] = true,
+        ["windows_x64_c:\\program files\\microsoft visual studio\\18\\enterprise\\vc\\tools\\msvc\\14.50.35717\\bin\\hostx64\\x86\\cl.exe__cxx_cxflags_-nologo_-FS -Fd"] = true
+    },
+    find_program_msvc_arch_x86_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\cl.exe]]
+    },
+    find_program_fetch_package_system = {
+        ninja = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja]],
+        cmake = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake]]
+    },
+    find_program_msvc_arch_x86_plat_windows_checktoolsh = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.50.35717\bin\HostX64\x86\link.exe]]
+    }
+}

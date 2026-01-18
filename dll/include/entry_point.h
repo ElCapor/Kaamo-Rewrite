@@ -1,0 +1,3 @@
+namespace kaamo {
+    void EntryPoint();
+}
