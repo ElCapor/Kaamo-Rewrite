@@ -37,6 +37,7 @@
         "xmake check",
         [[xmake l c:\Users\delly\.vscode\extensions\tboox.xmake-vscode-2.5.0\assets\update_intellisense.lua .vscode clangd]],
         "xmake ",
-        "xmake "
+        "xmake ",
+        "xmake clean"
     }
 }
