@@ -1,8 +1,0 @@
-{
-    packages = {
-        [[C:\Users\delly\AppData\Local\.xmake\packages\l\lua\v5.4.7\4b70e5bc8fa244088c7c1a30cbab7251]],
-        [[C:\Users\delly\AppData\Local\.xmake\packages\s\sol2\v3.5.0\b39d09d0a7bc4a93b9de0c2aa5f5009f]],
-        [[C:\Users\delly\AppData\Local\.xmake\packages\m\minhook\v1.3.4\5a5317a4f6c948a8add636e6178e936d]],
-        [[C:\Users\delly\AppData\Local\.xmake\packages\m\microsoft-detours\2023.6.8\049edc4aee9e46b8981da21a2b1c1890]]
-    }
-}
