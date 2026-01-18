@@ -90,6 +90,29 @@ yu::SetLogLevel(yu::LogLevel::Info);  // Ignores Debug messages
 yu::Logger::Instance().SetConsoleOutput(false);
 ```
 
+### Color Output
+
+By default, log messages use ANSI color codes for better readability. Colors are automatically detected based on terminal capabilities:
+
+- **Windows**: Virtual Terminal Processing is enabled if supported (Windows 10+)
+- **Unix/Linux**: Checks if stdout is a TTY and respects the `NO_COLOR` environment variable
+
+```cpp
+// Check if colors are supported
+bool hasColors = yu::Logger::DetectColorSupport();
+
+// Manually disable colors (e.g., for terminals without ANSI support)
+yu::Logger::Instance().SetColorOutput(false);
+
+// Re-enable colors
+yu::Logger::Instance().SetColorOutput(true);
+
+// Check current color state
+bool colorsEnabled = yu::Logger::Instance().IsColorOutput();
+```
+
+> **Note**: Colors are only used for console output, not file output.
+
 ### Log Output Format
 
 ```

@@ -62,6 +62,18 @@ public:
     /// Check if console output is enabled
     [[nodiscard]] bool IsConsoleOutput() const noexcept { return m_consoleOutput; }
 
+    /// Enable/disable colored console output
+    /// @param enabled true to enable colors, false to disable
+    /// @note Colors are auto-detected on startup based on terminal capabilities
+    void SetColorOutput(bool enabled) noexcept { m_colorOutput = enabled; }
+    
+    /// Check if colored output is enabled
+    [[nodiscard]] bool IsColorOutput() const noexcept { return m_colorOutput; }
+    
+    /// Auto-detect if the terminal supports ANSI colors
+    /// @return true if colors are supported
+    [[nodiscard]] static bool DetectColorSupport() noexcept;
+
     /// Set log file path (empty string disables file logging)
     /// @param filepath Path to the log file
     /// @return true if file was opened successfully
@@ -99,6 +111,7 @@ private:
 
     LogLevel      m_minLevel{LogLevel::Debug};
     bool          m_consoleOutput{true};
+    bool          m_colorOutput{true};
     std::ofstream m_fileStream;
     std::mutex    m_mutex;
 };

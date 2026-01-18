@@ -7,6 +7,6 @@ namespace kaamo::utils {
         AllocConsole();
         FILE* dummyfile;
         freopen_s(&dummyfile, "CONOUT$", "w", stdout);
-        freopen_s(&dummyfile, "CONOUT$", "w", stderr);
+        freopen_s(&dummyfile, "CONIN$", "r", stdin);
     }
 }

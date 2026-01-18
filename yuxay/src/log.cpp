@@ -6,6 +6,15 @@
 #include "yu/log.h"
 #include <iostream>
 #include <filesystem>
+#include <cstdlib>
+
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 
 namespace yu {
 
@@ -101,17 +110,21 @@ void Logger::Log(LogLevel level, std::string_view message, const std::source_loc
     
     std::lock_guard lock(m_mutex);
     
-    // Console output with colors (ANSI escape codes)
+    // Console output with optional colors (ANSI escape codes)
     if (m_consoleOutput) {
-        std::string_view colorCode;
-        switch (level) {
-            case LogLevel::Debug:   colorCode = "\033[36m"; break;  // Cyan
-            case LogLevel::Info:    colorCode = "\033[32m"; break;  // Green
-            case LogLevel::Warning: colorCode = "\033[33m"; break;  // Yellow
-            case LogLevel::Error:   colorCode = "\033[31m"; break;  // Red
-            default:                colorCode = "\033[0m";  break;  // Reset
+        if (m_colorOutput) {
+            std::string_view colorCode;
+            switch (level) {
+                case LogLevel::Debug:   colorCode = "\033[36m"; break;  // Cyan
+                case LogLevel::Info:    colorCode = "\033[32m"; break;  // Green
+                case LogLevel::Warning: colorCode = "\033[33m"; break;  // Yellow
+                case LogLevel::Error:   colorCode = "\033[31m"; break;  // Red
+                default:                colorCode = "\033[0m";  break;  // Reset
+            }
+            std::cout << colorCode << entry << "\033[0m\n";
+        } else {
+            std::cout << entry << '\n';
         }
-        std::cout << colorCode << entry << "\033[0m\n";
     }
     
     // File output
@@ -119,6 +132,57 @@ void Logger::Log(LogLevel level, std::string_view message, const std::source_loc
         m_fileStream << entry << '\n';
         m_fileStream.flush(); // Ensure immediate write for debugging
     }
+}
+
+bool Logger::DetectColorSupport() noexcept {
+#ifdef _WIN32
+    // Check if stdout is a console (not redirected to file/pipe)
+    if (!_isatty(_fileno(stdout))) {
+        return false;
+    }
+    
+    // Try to enable virtual terminal processing on Windows 10+
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE) {
+        return false;
+    }
+    
+    DWORD dwMode = 0;
+    if (!GetConsoleMode(hOut, &dwMode)) {
+        return false;
+    }
+    
+    // ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004
+    constexpr DWORD ENABLE_VT_PROCESSING = 0x0004;
+    if (dwMode & ENABLE_VT_PROCESSING) {
+        return true; // Already enabled
+    }
+    
+    // Try to enable it
+    if (SetConsoleMode(hOut, dwMode | ENABLE_VT_PROCESSING)) {
+        return true;
+    }
+    
+    // Windows older than 10 without VT support
+    return false;
+#else
+    // Unix-like: check if stdout is a TTY and TERM is set
+    if (!isatty(fileno(stdout))) {
+        return false;
+    }
+    
+    const char* term = std::getenv("TERM");
+    if (!term || std::string_view(term) == "dumb") {
+        return false;
+    }
+    
+    // Check for NO_COLOR environment variable (https://no-color.org/)
+    if (std::getenv("NO_COLOR")) {
+        return false;
+    }
+    
+    return true;
+#endif
 }
 
 } // namespace yu

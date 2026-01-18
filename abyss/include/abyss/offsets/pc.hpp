@@ -12,6 +12,8 @@ namespace abyss::offsets {
             constexpr std::uintptr_t malloc = 0x0052D150;
             constexpr std::uintptr_t free = 0x0052D14C;
             constexpr std::uintptr_t realloc = 0x0052D154;
+            constexpr std::uintptr_t newarray = 0x0052D16C;
+            constexpr std::uintptr_t deletearray = 0x0052D174;
         }
     }
 }

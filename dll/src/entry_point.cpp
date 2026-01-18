@@ -10,7 +10,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        std::thread(kaamo::EntryPoint).detach();
+        CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)kaamo::EntryPoint, nullptr, 0, nullptr);
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
