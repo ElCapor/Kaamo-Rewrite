@@ -236,9 +236,16 @@ public:
     // Prevent copying
     MemoryTracker(const MemoryTracker&) = delete;
     MemoryTracker& operator=(const MemoryTracker&) = delete;
+    
+    /// Check if tracker is shutting down (destructor called)
+    [[nodiscard]] static bool IsShuttingDown() noexcept { return s_shuttingDown; }
+
+    ~MemoryTracker();
 
 private:
     MemoryTracker();
+    
+    static inline std::atomic<bool> s_shuttingDown{false};
     
     mutable std::mutex m_mutex;
     std::unordered_map<void*, AllocationRecord> m_allocations;

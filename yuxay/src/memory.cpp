@@ -77,6 +77,12 @@ MemoryTracker& MemoryTracker::Instance() noexcept {
     return instance;
 }
 
+MemoryTracker::~MemoryTracker() {
+    // Mark as shutting down BEFORE destroying members
+    // This prevents re-entry during destruction of internal containers
+    s_shuttingDown.store(true, std::memory_order_release);
+}
+
 void MemoryTracker::RegisterTag(TagId id, std::string_view name) {
     std::lock_guard lock(m_mutex);
     m_tagNames[id] = std::string(name);
@@ -91,11 +97,30 @@ std::string_view MemoryTracker::GetTagName(TagId id) const {
     return "Unknown";
 }
 
+// Thread-local re-entry guard to prevent infinite recursion
+// when internal containers (unordered_map) allocate memory
+thread_local bool t_insideTracker = false;
+
+struct ReentryGuard {
+    bool& flag;
+    bool wasInside;
+    ReentryGuard(bool& f) : flag(f), wasInside(f) { flag = true; }
+    ~ReentryGuard() { flag = wasInside; }
+    bool shouldSkip() const { return wasInside; }
+};
+
 void MemoryTracker::RecordAllocation(void* ptr, std::size_t size, std::size_t alignment,
                                       TagId tag, AllocationType type,
                                       const std::source_location& loc) {
 #if YU_MEMORY_TRACKING_ENABLED
     if (!m_enabled || !ptr) return;
+    
+    // Don't try to lock mutex if we're shutting down - it may be destroyed
+    if (s_shuttingDown.load(std::memory_order_acquire)) return;
+    
+    // Prevent infinite recursion: internal containers may allocate memory
+    ReentryGuard guard(t_insideTracker);
+    if (guard.shouldSkip()) return;
     
     AllocationRecord record{
         .address = ptr,
@@ -138,6 +163,13 @@ void MemoryTracker::RecordAllocation(void* ptr, std::size_t size, std::size_t al
 void MemoryTracker::RecordDeallocation(void* ptr) {
 #if YU_MEMORY_TRACKING_ENABLED
     if (!m_enabled || !ptr) return;
+    
+    // Don't try to lock mutex if we're shutting down - it may be destroyed
+    if (s_shuttingDown.load(std::memory_order_acquire)) return;
+    
+    // Prevent infinite recursion: internal containers may allocate memory
+    ReentryGuard guard(t_insideTracker);
+    if (guard.shouldSkip()) return;
     
     std::lock_guard lock(m_mutex);
     
