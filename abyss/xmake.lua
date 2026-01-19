@@ -3,6 +3,7 @@ target("abyss")
     set_languages("cxx23")
     add_files("src/**.cpp")
     add_includedirs("include", {public = true})
+    add_defines("NOMINMAX")
     add_deps("yu")
 
 for _, testfile in ipairs(os.files("tests/*.cpp")) do

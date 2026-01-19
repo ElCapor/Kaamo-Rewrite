@@ -1,6 +1,7 @@
 #include <cstdint>
 namespace abyss::offsets {
     namespace globals {
+        constexpr std::uintptr_t canvas = 0x0060AE68;
     }
 
     namespace functions {
