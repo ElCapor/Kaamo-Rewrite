@@ -9,6 +9,27 @@
 #include <iostream>
 #include <Windows.h>
 #include <abyss/PaintCanvas.h>
+#include <dx9hook/d9hook.hpp>
+#include <dx9hook/d9draw.hpp>
+#include <dx9hook/dinput.hpp>
+
+
+class KaamoWidget : public d9widget
+{
+public:
+    void Init() override
+    {
+        // Initialization code for the widget
+    }
+
+    void Render(float dt) override
+    {
+        ImGui::Begin("Kaamo Overlay");
+        ImGui::Text("Kaamo DLL is active.");
+        ImGui::End();
+    }
+
+};
 
 namespace kaamo
 {
@@ -42,7 +63,10 @@ namespace kaamo
         tracker.PrintReport();
         game::yu_ready = true;
 
-
+        d9::HookDirectX();
+        d9::HookWindow();
+        dinput::InitHook();
+        d9draw::RegisterWidget(new KaamoWidget());
 
         while (!game::quit)
         {
@@ -50,8 +74,9 @@ namespace kaamo
             {
                 //tracker.PrintReport();
                 
-                auto canvas = abyss::canvas;
-                YU_LOG_INFO("Canvas has {} transforms", canvas->transforms.Size());
+                abyss::PaintCanvas* canvas = *reinterpret_cast<abyss::PaintCanvas**>(abyss::offsets::globals::canvas);
+                YU_LOG_INFO("Canvas {}", reinterpret_cast<void*>(canvas));
+                YU_LOG_INFO("Transforms count: {}", canvas ? canvas->transforms.Size() : 0);
             }
             if (GetAsyncKeyState(VK_F5) & 0x8000)
             {

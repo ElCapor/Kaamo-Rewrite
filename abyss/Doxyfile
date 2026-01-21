@@ -1,0 +1,123 @@
+# Doxyfile for abyss library
+
+# Project settings
+PROJECT_NAME           = "abyss"
+PROJECT_NUMBER         = "1.0"
+PROJECT_BRIEF          = "Galaxy on Fire 2 Classes documentation"
+
+# Input settings
+INPUT                  = include/
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = */build/* \
+                         */.git/*
+
+# Output settings
+OUTPUT_DIRECTORY       = docs/
+HTML_OUTPUT            = html/
+LATEX_OUTPUT           = latex/
+
+# Generation options
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_IN_BODY_DOCS      = NO
+INTERNAL_DOCS          = NO
+CASE_SENSE_NAMES       = YES
+HIDE_SCOPE_NAMES       = NO
+SHOW_INCLUDE_FILES     = YES
+ALLOW_UNICODE_NAMES    = NO
+
+# HTML options
+GENERATE_HTML          = YES
+HTML_DYNAMIC_SECTIONS  = NO
+HTML_INDEX_NUM_ENTRIES = 100
+
+# LaTeX options
+GENERATE_LATEX         = NO
+
+# Man page options
+GENERATE_MAN           = NO
+
+# RTF options
+GENERATE_RTF           = NO
+
+# XML options
+GENERATE_XML           = NO
+
+# Other options
+HAVE_DOT               = NO
+UML_LOOK               = NO
+TEMPLATE_RELATIONS     = NO
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO
+DIRECTORY_GRAPH        = YES
+DOT_IMAGE_FORMAT       = png
+INTERACTIVE_SVG        = NO
+DOT_PATH               =
+DOTFILE_DIRS           =
+MSCFILE_DIRS           =
+DIAFILE_DIRS           =
+PLANTUML_JAR_PATH      =
+
+# Preprocessor options
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           =
+INCLUDE_FILE_PATTERNS  =
+PREDEFINED             =
+EXPAND_AS_DEFINED      =
+
+# External references
+TAGFILES               =
+GENERATE_TAGFILE       =
+ALLEXTERNALS           = NO
+EXTERNAL_GROUPS        = YES
+EXTERNAL_PAGES         = YES
+
+# Warnings
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+WARN_FORMAT            = "$file:$line: $text"
+WARN_LOGFILE           =
+
+# Input file encoding
+INPUT_ENCODING         = UTF-8
+
+# File patterns
+FILE_PATTERNS          = *.h \
+                         *.hpp \
+                         *.hxx \
+                         *.h++ \
+                         *.hh \
+                         *.dox
+
+# Extension mappings
+EXTENSION_MAPPING      = h=C++ \
+                         hpp=C++
+
+# Bibliography
+CITE_BIB_FILES         =
+
+# Messages
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+
+# Distribution
+DISTRIBUTE_GROUP_DOC   = NO
+GROUP_NESTED_COMPOUNDS = NO
+SUBGROUPING            = YES
+INLINE_GROUPED_CLASSES = NO
+INLINE_SIMPLE_STRUCTS  = NO
+TYPEDEF_HIDES_STRUCT   = NO
+LOOKUP_CACHE_SIZE      = 0

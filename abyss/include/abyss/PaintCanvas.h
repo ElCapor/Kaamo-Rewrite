@@ -8,5 +8,5 @@ namespace abyss
         abyss::Array<abyss::Transform*> transforms; // at offset 0x168
     };
 
-    PaintCanvas* canvas = *reinterpret_cast<PaintCanvas**>(abyss::offsets::globals::canvas);
+    
 }

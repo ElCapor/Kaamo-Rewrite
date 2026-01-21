@@ -1,0 +1,42 @@
+/**
+@mainpage Abyss Library Documentation
+
+@section intro Introduction
+
+Hello! Thanks for using the Abyss library.
+
+Abyss is a C++ library designed for game modding and utility functions, providing essential components for developing game modifications and tools.
+
+@section basic_usage Basic Usage
+
+Here's a simple example of how to get started with the Abyss library:
+
+@code{.cpp}
+#include <abyss/AEArray.h>
+#include <abyss/AEString.h>
+
+// Example usage
+AEArray<int> myArray;
+myArray.push_back(42);
+
+AEString myString("Hello, Abyss!");
+@endcode
+
+@section advanced Advanced Features
+
+For more advanced usage, explore the following sections:
+
+- [Classes](classes.html) - Browse all available classes
+- [Namespaces](namespaces.html) - View namespace organization
+- [Files](files.html) - Examine source files and headers
+
+@section getting_started Getting Started
+
+1. Include the necessary headers from the `abyss/` directory
+2. Link against the abyss static library
+3. Refer to the class documentation for detailed API information
+
+@section support Support
+
+If you encounter any issues or have questions, please refer to the detailed documentation or check the source code for examples.
+*/
