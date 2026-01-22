@@ -1,3 +1,6 @@
+#ifndef AEARRAY_H
+#define AEARRAY_H
+
 #include <cstdint>
 #include <vector>
 #include <yu/memory.h>
@@ -771,3 +774,5 @@ namespace abyss
     }
 
 };
+
+#endif // AEARRAY_H
